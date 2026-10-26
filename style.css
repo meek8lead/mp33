@@ -1,0 +1,92 @@
+:root {
+    --bg: #0a0a0f;
+    --primary: #00ff41;
+    --secondary: #ff0055;
+    --dim: #003b0f;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background-color: var(--bg);
+    color: var(--primary);
+    font-family: 'Courier New', Courier, monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+/* CRT эффект */
+.crt-overlay {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none; z-index: 999;
+}
+
+header { padding: 20px; border-bottom: 2px solid var(--primary); text-align: center; }
+
+.glitch {
+    font-size: 2.5rem; font-weight: bold; text-transform: uppercase;
+    position: relative; text-shadow: 2px 2px var(--secondary);
+}
+
+.marquee { background: var(--primary); color: var(--bg); font-weight: bold; padding: 5px 0; margin-top: 10px; }
+
+.player-container {
+    max-width: 600px; margin: 40px auto; padding: 20px;
+    border: 2px solid var(--primary); box-shadow: 8px 8px 0px var(--dim);
+}
+
+/* Визуалайзер (CSS-анимация) */
+.visualizer {
+    display: flex; justify-content: center; align-items: flex-end; height: 60px; gap: 4px; margin-bottom: 20px;
+}
+.bar {
+    width: 15px; background: var(--primary); height: 10%;
+    animation: bounce 0.5s infinite alternate;
+}
+.bar:nth-child(odd) { animation-duration: 0.4s; background: var(--secondary); }
+.bar:nth-child(2) { animation-delay: 0.1s; }
+.bar:nth-child(3) { animation-delay: 0.2s; }
+.bar:nth-child(4) { animation-delay: 0.3s; }
+
+@keyframes bounce { 0% { height: 10%; } 100% { height: 100%; } }
+.paused .bar { animation-play-state: paused; height: 10% !important; transition: height 0.3s; }
+
+.track-info { text-align: center; margin-bottom: 20px; }
+#current-title { font-size: 1.2rem; margin-bottom: 10px; word-break: break-all; }
+
+.progress-bar {
+    width: 100%; height: 10px; background: var(--dim); border: 1px solid var(--primary); margin: 10px 0;
+}
+.progress-fill { width: 0%; height: 100%; background: var(--secondary); transition: width 0.1s linear; }
+
+.time { display: flex; justify-content: space-between; font-size: 0.8rem; }
+
+.controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+
+.retro-btn {
+    background: var(--bg); color: var(--primary); border: 2px solid var(--primary);
+    padding: 10px 20px; font-family: inherit; font-weight: bold; cursor: pointer;
+    box-shadow: 4px 4px 0px var(--primary); transition: all 0.1s;
+}
+.retro-btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0px var(--primary); }
+.retro-btn.play { background: var(--primary); color: var(--bg); }
+
+.playlist ul { list-style: none; max-height: 200px; overflow-y: auto; border: 1px solid var(--dim); }
+.playlist li {
+    padding: 10px; border-bottom: 1px solid var(--dim); cursor: pointer; transition: 0.2s;
+}
+.playlist li:hover { background: var(--dim); color: #fff; }
+.playlist li.active { background: var(--primary); color: var(--bg); font-weight: bold; }
+
+footer { text-align: center; padding: 20px; margin-top: auto; }
+.tiny-btn { background: none; border: 1px solid var(--dim); color: var(--dim); cursor: pointer; font-size: 0.7rem; }
+.tiny-btn:hover { color: var(--secondary); border-color: var(--secondary); }
+
+/* Скроллбар */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--primary); }
