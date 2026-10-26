@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/// AUDIO_TERMINAL ///</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="crt-overlay"></div>
+    
+    <header>
+        <h1 class="glitch" data-text="AUDIO_TERMINAL_V.1.0">AUDIO_TERMINAL_V.1.0</h1>
+        <marquee scrollamount="10" class="marquee">/// SYSTEM ONLINE /// NO AI SLOP DETECTED /// PURE AUDIO STREAM /// INSERT COIN TO CONTINUE ///</marquee>
+    </header>
+
+    <main class="player-container">
+        <div class="visualizer">
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+        
+        <div class="track-info">
+            <h2 id="current-title">NO TRACK LOADED</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            <div class="time"><span id="current-time">0:00</span> / <span id="duration">0:00</span></div>
+        </div>
+
+        <div class="controls">
+            <button id="prev-btn" class="retro-btn">◄◄</button>
+            <button id="play-btn" class="retro-btn play">► PLAY</button>
+            <button id="next-btn" class="retro-btn">►►</button>
+        </div>
+
+        <div class="playlist">
+            <h3>:: PLAYLIST ::</h3>
+            <ul id="playlist-ul"></ul>
+        </div>
+    </main>
+
+    <footer>
+        <button id="admin-trigger" class="tiny-btn">[ ADMIN_ACCESS ]</button>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
