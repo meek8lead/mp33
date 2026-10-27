@@ -12,6 +12,17 @@ const durationEl = document.getElementById('duration');
 const playlistUl = document.getElementById('playlist-ul');
 const visualizer = document.querySelector('.visualizer');
 
+// Случайные глитчи на странице
+function randomGlitch() {
+    const els = document.querySelectorAll('.retro-btn, .track-info, h1');
+    const randomEl = els[Math.floor(Math.random() * els.length)];
+    randomEl.style.transform = `translate(${Math.random() * 4 - 2}px, ${Math.random() * 4 - 2}px)`;
+    setTimeout(() => {
+        randomEl.style.transform = 'translate(0, 0)';
+    }, 100);
+}
+setInterval(randomGlitch, 3000);
+
 // Инициализация плейлиста
 function renderPlaylist() {
     playlistUl.innerHTML = '';
@@ -91,3 +102,8 @@ document.getElementById('admin-trigger').addEventListener('click', () => {
 visualizer.classList.add('paused');
 renderPlaylist();
 if (playlistData.length > 0) loadTrack(0);
+
+// Лог для отладки
+console.log("=== AUDIO_TERMINAL LOADED ===");
+console.log("Tracks found:", playlistData.length);
+console.log("Playlist:", playlistData);
